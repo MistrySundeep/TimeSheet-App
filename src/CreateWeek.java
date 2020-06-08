@@ -7,14 +7,14 @@ public class CreateWeek extends TimeSheet {
     }
 
     //Creates a LinkedList of days of the week
-    private static LinkedList<String> dayList(){
+    public static LinkedList<String> dayList(){
         LinkedList d = new LinkedList();
         for(dayOfWeek day : dayOfWeek.values()){
             d.add(day.toString());
         }
         return d;
     }
-    
+
     //Creates a List of double values entered by the user
     public static List<Double> hours(){
         List<Double> hoursWorked = new ArrayList<>();
