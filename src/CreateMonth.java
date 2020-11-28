@@ -3,6 +3,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class CreateMonth extends CreateWeek {
@@ -28,19 +30,18 @@ public class CreateMonth extends CreateWeek {
 
         try{
             FileWriter fileWriter = new FileWriter("output.txt");
-            Date date = Calendar.getInstance().getTime();
-            DateFormat dateFormat = new SimpleDateFormat("dd-mm-yy hh:mm");
-            String strDate = dateFormat.format(date);
+            String strDate = LocalDate.now(ZoneId.of("Europe/London")).toString();
 
             fileWriter.write("Your TimeSheet created on: " + strDate);
             fileWriter.write(System.getProperty("line.separator"));
 
-
+            int count = 1;
             for(int i=0; i<month.size(); i++){
                 fileWriter.write(System.getProperty("line.separator"));
-                fileWriter.write("Week " + i + ":");
+                fileWriter.write("Week " + count + ":");
                 fileWriter.write(month.get(i).toString());
                 fileWriter.write(System.getProperty("line.separator"));
+                count++;
             }
             fileWriter.close();
 
